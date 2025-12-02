@@ -21,7 +21,6 @@ export class PokemonService {
   async create(createPokemonDto: CreatePokemonDto) {
     
     createPokemonDto.name = createPokemonDto.name.toLowerCase();
-
     try {
       const pokemon = await this.pokemonModel.create( createPokemonDto );    
       return pokemon;      
@@ -39,7 +38,6 @@ export class PokemonService {
   async findOne(term: string) {
     
     let pokemon: Pokemon | null = null;
-
     // primero verificamos si el id es un número
     if ( !isNaN(+term) ) { // estamos negando con el ! (si esto es un número)
       pokemon = await this.pokemonModel.findOne({
@@ -66,7 +64,6 @@ export class PokemonService {
   async update(term: string, updatePokemonDto: UpdatePokemonDto) {
 
     const pokemon = await this.findOne(term);
-
     if (updatePokemonDto.name) 
       updatePokemonDto.name = updatePokemonDto.name.toLowerCase();
     
@@ -85,7 +82,7 @@ export class PokemonService {
     // await pokemon.deleteOne();
     // return { id };
     // const result = await this.pokemonModel.findByIdAndDelete(id);
-    const { deletedCount } = await this.pokemonModel.deleteOne({ _id: id});
+    const { deletedCount } = await this.pokemonModel.deleteOne({ _id: id}); // deleteOne devuelve un objeto con el conteo de eliminados
     if ( deletedCount === 0 )
       throw new BadRequestException(`Pokemon with id "${ id }" not found`);
     return;
