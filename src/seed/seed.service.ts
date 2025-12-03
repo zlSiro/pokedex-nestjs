@@ -19,8 +19,7 @@ export class SeedService {
       // tiene que ser un numero, por eso usamos el operador '+' para convertir el string a number
       const no: number = +segments[ segments.length - 2];
       console.log({ name, no })
-    })
-    
+    })    
     return data.results;
   }
 }
