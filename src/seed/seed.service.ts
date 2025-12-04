@@ -54,8 +54,9 @@ export class SeedService {
     await Promise.all(insertPromisesArray);
 
     */
-
-    // Forma más eficiente de hacer el seed usando insertMany
+    /**
+     * FORMA MAS EFICIENTE DE HACER EL SEE USANDO insertMany
+     */
     
     await this.pokemonModel.deleteMany({}); // DELETE * FROM pokemons en SQL
     
