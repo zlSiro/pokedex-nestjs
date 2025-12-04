@@ -14,6 +14,10 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: true, // Esto permite transformar los payloads a los tipos de los DTOs. Payload significa los datos que vienen en el body de la request
+      transformOptions: {
+        enableImplicitConversion: true, // Esto permite la conversion implicita de tipos (ejemplo string a number)
+      }
     })
   )
 
