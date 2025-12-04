@@ -22,6 +22,7 @@ export class PokemonService {
     
     createPokemonDto.name = createPokemonDto.name.toLowerCase();
     try {
+      // Usas this.pokemonModel.create() - método de Mongoose
       const pokemon = await this.pokemonModel.create( createPokemonDto );    
       return pokemon;      
     } catch (error) {
