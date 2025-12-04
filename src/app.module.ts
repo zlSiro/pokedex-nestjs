@@ -5,10 +5,16 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   // Modulo de contenido estatico. Sirve para servir archivos estaticos como imagenes, html, css, js, etc.
   imports: [
+    
+    // Configuracion de variables de entorno
+    // Lee el archivo .env y carga las variables de entorno en process.env
+    // Tiene que ser el primer modulo en importarse para que las demas configuraciones puedan usar las variables de entorno
+    ConfigModule.forRoot(),
     
     // Configuracion del modulo de contenido estatico
     ServeStaticModule.forRoot({
@@ -16,7 +22,7 @@ import { SeedModule } from './seed/seed.module';
     }),
 
     // Conexion a la base de datos MongoDB
-    MongooseModule.forRoot('mongodb://localhost:27017/nest-pokemon'),
+    MongooseModule.forRoot(process.env.MONGODB!),
     
     // Modulos de la aplicacion
     PokemonModule,
