@@ -6,6 +6,7 @@ import { PokemonModule } from './pokemon/pokemon.module';
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
 import { ConfigModule } from '@nestjs/config';
+import { EnvConfiguration } from './common/config/env.config';
 
 @Module({
   // Modulo de contenido estatico. Sirve para servir archivos estaticos como imagenes, html, css, js, etc.
@@ -14,7 +15,9 @@ import { ConfigModule } from '@nestjs/config';
     // Configuracion de variables de entorno
     // Lee el archivo .env y carga las variables de entorno en process.env
     // Tiene que ser el primer modulo en importarse para que las demas configuraciones puedan usar las variables de entorno
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      load: [ EnvConfiguration ] // Carga la configuracion de variables de entorno
+    }),
     
     // Configuracion del modulo de contenido estatico
     ServeStaticModule.forRoot({
