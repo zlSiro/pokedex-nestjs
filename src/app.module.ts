@@ -7,6 +7,7 @@ import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
 import { ConfigModule } from '@nestjs/config';
 import { EnvConfiguration } from './common/config/env.config';
+import { JoiValidationSchema } from './common/config/joi.validation';
 
 @Module({
   // Modulo de contenido estatico. Sirve para servir archivos estaticos como imagenes, html, css, js, etc.
@@ -16,7 +17,8 @@ import { EnvConfiguration } from './common/config/env.config';
     // Lee el archivo .env y carga las variables de entorno en process.env
     // Tiene que ser el primer modulo en importarse para que las demas configuraciones puedan usar las variables de entorno
     ConfigModule.forRoot({
-      load: [ EnvConfiguration ] // Carga la configuracion de variables de entorno
+      load: [ EnvConfiguration ], // Carga la configuracion de variables de entorno,
+      validationSchema: JoiValidationSchema, // Valida las variables de entorno con Joi
     }),
     
     // Configuracion del modulo de contenido estatico
