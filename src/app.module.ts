@@ -30,4 +30,11 @@ import { ConfigModule } from '@nestjs/config';
     SeedModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  
+  // como es una clase de TypeScript, podemos usar el constructor para hacer cosas al inicializar la aplicacion
+
+  /* constructor() {
+    console.log( process.env );
+  } */
+}
