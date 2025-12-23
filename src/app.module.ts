@@ -27,7 +27,9 @@ import { JoiValidationSchema } from './common/config/joi.validation';
     }),
 
     // Conexion a la base de datos MongoDB
-    MongooseModule.forRoot(process.env.MONGODB!),
+    MongooseModule.forRoot(process.env.MONGODB!, {
+      dbName: 'pokemonsdb',
+    }),
     
     // Modulos de la aplicacion
     PokemonModule,
