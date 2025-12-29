@@ -38,3 +38,6 @@ http://localhost:3000/api/v2/seed
 * MongoDB
 * Nest
 * Mongoose
+
+# TO DO
+*crear la construccion del contenedor con docker*
